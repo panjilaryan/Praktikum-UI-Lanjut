@@ -1,10 +1,15 @@
+<script setup>
+import AppButton from '@/components/ui/AppButton.vue'
+import AppCard from '@/components/ui/AppCard.vue'
+</script>
+
 <template>
   <div class="event-detail-page">
     <button @click="$router.push('/browse/events')" class="btn-back">&larr; Back to Events</button>
 
     <div class="detail-header">
       <span class="event-tag">Workshop & Training</span>
-      <h1>Vue.js Mastery Workshop ({{ $route.params.id }})</h1>
+      <h1>Vue.js Mastery Workshop {{ $route.params.id }}</h1>
       <div class="meta-info">
         <span class="meta-item">📅 October 12, 2026</span>
         <span class="meta-item">📍 Tech Hub, Jakarta Pusat</span>
@@ -14,7 +19,7 @@
 
     <!-- ASYMMETRICAL LAYOUT -->
     <div class="detail-content grid-asymmetric">
-      <!-- F-PATTERN: Breaking text with Headings & Bullet Points -->
+      <!-- F-Pattern: Breaking text with Headings & Bullet Points -->
       <div class="main-desc">
         <h2>About This Event</h2>
         <p>
@@ -29,7 +34,7 @@
           directly applied to your future projects or career.
         </p>
 
-        <h2>Event Agenda</h2>
+        <h2>Event Agenda:</h2>
         <ul class="agenda-list">
           <li><strong>09:00 AM</strong> - Registration & QR Check-in Scanning</li>
           <li><strong>10:00 AM</strong> - Session 1: Vue Router & Navigation Fundamentals</li>
@@ -41,14 +46,16 @@
 
       <!-- FOCAL POINT & STICKY PANE -->
       <div class="sidebar">
-        <div class="ticket-card sticky-pane">
+        <AppCard class="ticket-card sticky-pane">
           <h3>Attendee Registration</h3>
           <p class="price">Free</p>
           <p class="ticket-desc">Secure your seat now before the quota is full.</p>
+
           <!-- STRONGEST FOCAL POINT -->
-          <button class="btn-register">Register Now</button>
+          <AppButton variant="primary" class="btn-register"> Register Now </AppButton>
+
           <p class="spots">Only 12 seats left!</p>
-        </div>
+        </AppCard>
       </div>
     </div>
   </div>
@@ -136,11 +143,7 @@
 
 /* FOCAL POINT CARD */
 .ticket-card {
-  background: white;
   padding: var(--space-8);
-  border-radius: var(--space-4);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   text-align: center;
 }
 
@@ -169,18 +172,6 @@
 
 .btn-register {
   width: 100%;
-  padding: var(--space-4);
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.btn-register:hover {
-  background: var(--primary-hover);
 }
 
 .spots {
